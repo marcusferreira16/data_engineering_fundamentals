@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Variáveis de ambiente
+.env.txt
+.env
+.DS_Store
