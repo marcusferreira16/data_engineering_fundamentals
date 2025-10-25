@@ -1,6 +1,4 @@
-boto3==1.35.6
-minio==7.2.7
-pyspark==3.5.1
-pyarrow==17.0.0
-pytest==8.3.2
-python-dotenv==1.0.1
+pyspark==4.0.1
+boto3==1.40.59
+botocore==1.40.59
+python-dotenv>=1.0.0
