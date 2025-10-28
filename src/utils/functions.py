@@ -46,8 +46,20 @@ def retorna_dataframe(spark, bucket: str, key: str, tipo_arquivo: str):
     tipo_arquivo = tipo_arquivo.lower()
     if tipo_arquivo == "csv":
         df = spark.read.option("header", "true").option("inferSchema", "true").csv(tmp_path)
-    elif tipo_arquivo in ("json", "jsonl"):
-        df = spark.read.option("multiline", "true").json(tmp_path)
+    elif tipo_arquivo == "json":
+        df = (
+            spark.read
+            .option("multiline", "true")
+            .option("columnNameOfCorruptRecord", "_corrupt_record")
+            .json(tmp_path)
+        )
+    elif tipo_arquivo == "jsonl":
+        df = (
+            spark.read
+            .option("multiline", "false")
+            .option("columnNameOfCorruptRecord", "_corrupt_record")
+            .json(tmp_path)
+        )
     else:
         raise ValueError("Tipo de arquivo não suportado. Use 'csv' ou 'json'.")
 

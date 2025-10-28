@@ -1,4 +1,4 @@
-from utils.functions import spark_session, retorna_dataframe
+from src.utils.functions import spark_session, retorna_dataframe
 
 spark = spark_session()
 
@@ -23,6 +23,7 @@ eventos = retorna_dataframe(
     tipo_arquivo="jsonl"
 )
 
-pedidos.show(3, False)
-clientes.show(3, False)
-eventos.show(3, False)
+# pedidos.show(3, False)
+# clientes.show(3, False)
+eventos.show(10, False)
+eventos.printSchema()
